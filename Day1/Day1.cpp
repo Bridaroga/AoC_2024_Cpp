@@ -2,14 +2,14 @@
 #include <vector>
 #include <fstream>
 #include <string>
-#include <tuple>
+#include <algorithm>
 
-struct par {
+struct Par {
     int x;
     int y;
 };
 
-par numerosID(const std::string& linea) {
+Par numerosID(const std::string& linea) {
     int tempX { 0 };
     int tempY { 0 };
 
@@ -28,22 +28,26 @@ par numerosID(const std::string& linea) {
     return { tempX, tempY };
 }
 
-// Para organizar los vectores en orden ascendente.
-void organizarVector() {
-
-}
-
 int main() {
     std::ifstream idDocument ("ID.txt");
     std::string lineaID { "" };
-    std::vector<par> vectorLista {};
-    int contador { 0 };
+    std::vector<int> vectorLista1 {};
+    std::vector<int> vectorLista2 {};
 
     while (!idDocument.eof()) {
         std::getline(idDocument, lineaID);
-        
-        vectorLista.push_back( numerosID(lineaID) );
-        std::cout << vectorLista[contador].x << "  " << vectorLista[contador].y << '\n';
-        contador++;
+        Par tempPar { numerosID(lineaID) };
+
+        vectorLista1.push_back(tempPar.x);
+        vectorLista2.push_back(tempPar.y);
     }
+
+    std::sort(vectorLista1.begin(), vectorLista1.end());
+    std::sort(vectorLista2.begin(), vectorLista2.end());
+
+    
+
+    /* for (int i = 0; i < vectorLista1.size(); i++) {
+        std::cout << vectorLista1[i] << "  " << vectorLista2[i] << '\n';
+    } */
 }
