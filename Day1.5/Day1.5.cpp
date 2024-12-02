@@ -42,17 +42,16 @@ int main() {
         vectorLista2.push_back(tempPar.y);
     }
 
-    std::sort(vectorLista1.begin(), vectorLista1.end());
-    std::sort(vectorLista2.begin(), vectorLista2.end());
-
-    int distanciaTotal { 0 };
-    for (int i = 0; i < vectorLista1.size(); i++) {
-        if (vectorLista1[i] <= vectorLista2[i]) {
-            distanciaTotal += vectorLista2[i] - vectorLista1[i];
-        } else {
-            distanciaTotal += vectorLista1[i] - vectorLista2[i];
+    int similarTotal { 0 };
+    for (int i {0}; i < vectorLista1.size(); i++) {
+        int contador {0};
+        for (int j {0}; j < vectorLista2.size(); j++) {
+            if (vectorLista1[i] == vectorLista2[j]) {
+                contador++;
+            }
         }
+        similarTotal += vectorLista1[i] * contador;
     }
 
-    std::cout << distanciaTotal << '\n';
+    std::cout << similarTotal << '\n';
 }
