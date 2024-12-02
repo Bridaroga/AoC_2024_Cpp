@@ -45,9 +45,14 @@ int main() {
     std::sort(vectorLista1.begin(), vectorLista1.end());
     std::sort(vectorLista2.begin(), vectorLista2.end());
 
-    
+    int distanciaTotal { 0 };
+    for (int i = 0; i < vectorLista1.size(); i++) {
+        if (vectorLista1[i] <= vectorLista2[i]) {
+            distanciaTotal += vectorLista2[i] - vectorLista1[i];
+        } else {
+            distanciaTotal += vectorLista1[i] - vectorLista2[i];
+        }
+    }
 
-    /* for (int i = 0; i < vectorLista1.size(); i++) {
-        std::cout << vectorLista1[i] << "  " << vectorLista2[i] << '\n';
-    } */
+    std::cout << distanciaTotal << '\n';
 }
