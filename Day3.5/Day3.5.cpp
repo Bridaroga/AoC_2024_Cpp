@@ -41,6 +41,7 @@ int main() {
         for (std::sregex_iterator i = inicioLinea; i != finLinea; i++) {
             std::smatch match = *i;
             std::string matchStr = match.str();
+            std::cout << match.position() << '\n';
 
             sumaMultiplicacion += multiplicacion(matchStr);
         }
