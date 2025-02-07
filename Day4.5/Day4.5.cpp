@@ -52,6 +52,12 @@ int main() {
                 if (mas == palabra && mas == palabra2) {
                     conteoXMAS++;
                 }
+
+                // 4) Abajo-derecha, Abajo-izquierda.
+                std::reverse(palabra2.begin(), palabra2.end());
+                if (mas == palabra && mas == palabra2) {
+                    conteoXMAS++;
+                }
             }
         }
     }
