@@ -42,6 +42,10 @@ int main() {
                 }
 
                 // 2) Arriba-derecha, Arriba-izquierda.
+                std::reverse(palabra2.begin(), palabra2.end());
+                if (mas == palabra && mas == palabra2) {
+                    conteoXMAS++;
+                }
             }
         }
     }
