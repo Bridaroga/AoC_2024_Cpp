@@ -20,12 +20,12 @@ int main() {
     }
 
     int conteoXMAS { 0 };
-    const std::string xmas { "XMAS" };
-    const std::size_t POSICION_X { 0 };
-    const std::size_t BORDE { 3 };
-    for (std::size_t i = 0; i < crossword.size(); i++) {
-        for (std::size_t j = 0; j < crossword[i].size(); j++) {
-            if (xmas[POSICION_X] == crossword[i][j]) {
+    const std::string mas { "MAS" };
+    const std::size_t POSICION_A { 1 };
+    const std::size_t BORDE { 1 };
+    for (std::size_t i = 1; i < crossword.size() - BORDE; i++) {
+        for (std::size_t j = 1; j < crossword[i].size() - BORDE; j++) {
+            if (mas[POSICION_A] == crossword[i][j]) {
                 // 1) Arriba.
                 if (i >= BORDE) {
                     char charPalabra[] = { crossword[i][j],
@@ -34,7 +34,7 @@ int main() {
                                            crossword[i - 3][j],
                                            '\0' };
                     std::string palabra { charPalabra };
-                    if (xmas == palabra) {
+                    if (mas == palabra) {
                         conteoXMAS++;
                     }
                 }
@@ -46,7 +46,7 @@ int main() {
                                            crossword[i - 3][j + 3],
                                            '\0' };
                     std::string palabra { charPalabra };
-                    if (xmas == palabra) {
+                    if (mas == palabra) {
                         conteoXMAS++;
                     }
                 }
@@ -58,7 +58,7 @@ int main() {
                                            crossword[i][j + 3],
                                            '\0' };
                     std::string palabra { charPalabra };
-                    if (xmas == palabra) {
+                    if (mas == palabra) {
                         conteoXMAS++;
                     }
                 }
@@ -70,7 +70,7 @@ int main() {
                                            crossword[i + 3][j + 3],
                                            '\0' };
                     std::string palabra { charPalabra };
-                    if (xmas == palabra) {
+                    if (mas == palabra) {
                         conteoXMAS++;
                     }
                 }
@@ -82,7 +82,7 @@ int main() {
                                            crossword[i + 3][j],
                                            '\0' };
                     std::string palabra { charPalabra };
-                    if (xmas == palabra) {
+                    if (mas == palabra) {
                         conteoXMAS++;
                     }
                 }
@@ -94,7 +94,7 @@ int main() {
                                            crossword[i + 3][j - 3],
                                            '\0' };
                     std::string palabra { charPalabra };
-                    if (xmas == palabra) {
+                    if (mas == palabra) {
                         conteoXMAS++;
                     }
                 }
@@ -106,7 +106,7 @@ int main() {
                                            crossword[i][j - 3],
                                            '\0' };
                     std::string palabra { charPalabra };
-                    if (xmas == palabra) {
+                    if (mas == palabra) {
                         conteoXMAS++;
                     }
                 }
@@ -118,7 +118,7 @@ int main() {
                                            crossword[i - 3][j - 3],
                                            '\0' };
                     std::string palabra { charPalabra };
-                    if (xmas == palabra) {
+                    if (mas == palabra) {
                         conteoXMAS++;
                     }
                 }
