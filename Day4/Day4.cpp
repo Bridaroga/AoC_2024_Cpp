@@ -11,21 +11,43 @@
 int main() {
     std::ifstream crosswordDocument("Crossword.txt");
     std::string lineaCrossword { "" };
-    std::vector<std::vector<std::string>> crossword {};
+    std::vector<std::string> crossword {};
 
     while (!crosswordDocument.eof()) {
         std::getline(crosswordDocument, lineaCrossword);
-        std::vector<std::string> vectorLinea {};
-        vectorLinea.push_back(lineaCrossword);
-        crossword.push_back(vectorLinea);
+        crossword.push_back(lineaCrossword);
     }
 
-    /* for (size_t i = 0; i < crossword.size(); i++) {
-        for (size_t j = 0; j < crossword[i].size(); j++) {
+    /* for (std::size_t i = 0; i < crossword.size(); i++) {
+        for (std::size_t j = 0; j < crossword[i].size(); j++) {
             std::cout << crossword[i][j];
         }
         std::cout << '\n';
     } */
+    
+    int conteoXMAS { 0 };
+    const std::string xmas { "XMAS" };
+    const std::size_t POSICION_X { 0 };
+    const std::size_t BORDE { 3 };
+    for (std::size_t i = 0; i < crossword.size(); i++) {
+        for (std::size_t j = 0; j < crossword[i].size(); j++) {
+            if (xmas[POSICION_X] == crossword[i][j]) {
+                // 1) Arriba.
+                if (i >= BORDE) {
+                    char charPalabra[] = { crossword[i][j],
+                                           crossword[i-1][j],
+                                           crossword[i-2][j],
+                                           crossword[i-3][j],
+                                           '\0' };
+                    std::string palabra { charPalabra };
+                    if (xmas == palabra) {
+                        conteoXMAS++;
+                    }
+                }
+            }
+        }
+        std::cout << '\n';
+    }
 
-   
+    std::cout << conteoXMAS << '\n';
 }
