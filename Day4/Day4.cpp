@@ -80,6 +80,18 @@ int main() {
                         conteoXMAS++;
                     }
                 }
+                // 5) Abajo.
+                if (i < crossword.size() - BORDE) {
+                    char charPalabra[] = { crossword[i][j],
+                                           crossword[i + 1][j],
+                                           crossword[i + 2][j],
+                                           crossword[i + 3][j],
+                                           '\0' };
+                    std::string palabra { charPalabra };
+                    if (xmas == palabra) {
+                        conteoXMAS++;
+                    }
+                }
             }
         }
         std::cout << '\n';
