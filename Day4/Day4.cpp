@@ -104,6 +104,18 @@ int main() {
                         conteoXMAS++;
                     }
                 }
+                // 7) Izquierda.
+                if (j >= BORDE) {
+                    char charPalabra[] = { crossword[i][j],
+                                           crossword[i][j - 1],
+                                           crossword[i][j - 2],
+                                           crossword[i][j - 3],
+                                           '\0' };
+                    std::string palabra { charPalabra };
+                    if (xmas == palabra) {
+                        conteoXMAS++;
+                    }
+                }
             }
         }
         std::cout << '\n';
