@@ -9,7 +9,7 @@
 #include <vector>
 
 int main() {
-    std::ifstream crosswordDocument("Crossword.txt");
+    std::ifstream crosswordDocument("Crossword2.txt");
     std::string lineaCrossword { "" };
     std::vector<std::string> crossword {};
 
