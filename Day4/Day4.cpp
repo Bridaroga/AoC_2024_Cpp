@@ -17,19 +17,15 @@ int main() {
         std::getline(crosswordDocument, lineaCrossword);
         crossword.push_back(lineaCrossword);
     }
-
-    /* for (std::size_t i = 0; i < crossword.size(); i++) {
-        for (std::size_t j = 0; j < crossword[i].size(); j++) {
-            std::cout << crossword[i][j];
-        }
-        std::cout << '\n';
-    } */
     
     int conteoXMAS { 0 };
     const std::string xmas { "XMAS" };
     const std::size_t POSICION_X { 0 };
     const std::size_t BORDE { 3 };
+    const int WIDTH { 140 };
     for (std::size_t i = 0; i < crossword.size(); i++) {
+        int conteoLinea { 0 };
+        std::cout << "Línea " << i + 1 << ":";
         for (std::size_t j = 0; j < crossword[i].size(); j++) {
             if (xmas[POSICION_X] == crossword[i][j]) {
                 // 1) Arriba.
@@ -42,6 +38,8 @@ int main() {
                     std::string palabra { charPalabra };
                     if (xmas == palabra) {
                         conteoXMAS++;
+                        conteoLinea++;
+                        std::cout << " " << (i * WIDTH) + j;
                     }
                 }
                 // 2) Arriba-derecha.
@@ -54,6 +52,8 @@ int main() {
                     std::string palabra { charPalabra };
                     if (xmas == palabra) {
                         conteoXMAS++;
+                        conteoLinea++;
+                        std::cout << " " << (i * WIDTH) + j;
                     }
                 }
                 // 3) Derecha.
@@ -66,6 +66,8 @@ int main() {
                     std::string palabra { charPalabra };
                     if (xmas == palabra) {
                         conteoXMAS++;
+                        conteoLinea++;
+                        std::cout << " " << (i * WIDTH) + j;
                     }
                 }
                 // 4) Abajo-derecha.
@@ -78,6 +80,8 @@ int main() {
                     std::string palabra { charPalabra };
                     if (xmas == palabra) {
                         conteoXMAS++;
+                        conteoLinea++;
+                        std::cout << " " << (i * WIDTH) + j;
                     }
                 }
                 // 5) Abajo.
@@ -90,6 +94,8 @@ int main() {
                     std::string palabra { charPalabra };
                     if (xmas == palabra) {
                         conteoXMAS++;
+                        conteoLinea++;
+                        std::cout << " " << (i * WIDTH) + j;
                     }
                 }
                 // 6) Abajo-izquierda.
@@ -102,6 +108,8 @@ int main() {
                     std::string palabra { charPalabra };
                     if (xmas == palabra) {
                         conteoXMAS++;
+                        conteoLinea++;
+                        std::cout << " " << (i * WIDTH) + j;
                     }
                 }
                 // 7) Izquierda.
@@ -114,6 +122,8 @@ int main() {
                     std::string palabra { charPalabra };
                     if (xmas == palabra) {
                         conteoXMAS++;
+                        conteoLinea++;
+                        std::cout << " " << (i * WIDTH) + j;
                     }
                 }
                 // 8) Arriba-izquierda.
@@ -126,10 +136,13 @@ int main() {
                     std::string palabra { charPalabra };
                     if (xmas == palabra) {
                         conteoXMAS++;
+                        conteoLinea++;
+                        std::cout << " " << (i * WIDTH) + j;
                     }
                 }
             }
         }
+        std::cout << " => " << conteoLinea << '\n';
     }
 
     std::cout << conteoXMAS << '\n';
