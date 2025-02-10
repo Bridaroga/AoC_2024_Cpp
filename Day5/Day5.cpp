@@ -5,6 +5,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
+
 
 // Nodo con solamente apuntadores a la izquierda y derecha.
 struct nodo {
@@ -31,7 +33,7 @@ nodo* insertar(struct nodo* nodo, int pagIzquierda, int pagDerecha) {
         return nuevoNodo(pagIzquierda, pagDerecha);
     }
 
-    if (pagDerecha < nodo->pagDerecha) {
+    if (pagIzquierda < nodo->pagIzquierda) {
         nodo->izquierda = insertar(nodo->izquierda, pagIzquierda, pagDerecha);
     }
     else {
@@ -48,11 +50,37 @@ void printEnOrden(struct nodo* nodo) {
 
     printEnOrden(nodo->izquierda);
 
-    std::cout << "Izquierda: " << nodo->pagIzquierda << "    Apuesta: " << nodo->pagDerecha << '\n';
+    std::cout << "Izquierda: " << nodo->pagIzquierda << "    Derecha: " << nodo->pagDerecha << '\n';
     
     printEnOrden(nodo->derecha);
 }
 
 int main() {
-    
+    std::ifstream rulesDocument("Rules.txt");
+    std::string lineaRules { "" };
+    struct nodo* raizArbol { NULL };
+    const std::size_t INICIO_REGLA { 0 };
+    const std::size_t POSICION_SEPARADOR { 2 };
+    const std::size_t TAMANO_REGLAS { 5 };
+
+    while (!rulesDocument.eof()) {
+        std::getline(rulesDocument, lineaRules);
+        if (lineaRules.size() == TAMANO_REGLAS && lineaRules.find( '|' ) == POSICION_SEPARADOR) {
+            int pagIzquierda { std::stoi(lineaRules.substr(INICIO_REGLA, POSICION_SEPARADOR)) };
+            std::string prueba {lineaRules.substr(POSICION_SEPARADOR + 1)};
+            int pagDerecha { std::stoi(lineaRules.substr(POSICION_SEPARADOR + 1)) };
+            
+            if (raizArbol == NULL) {
+                raizArbol = insertar(raizArbol, pagIzquierda, pagDerecha);
+            } else {
+                insertar(raizArbol, pagIzquierda, pagDerecha);
+            }
+        } else {
+            // Guardar las impresiones en el vector<int>.
+
+        }
+
+    }
+
+    printEnOrden(raizArbol);
 }
