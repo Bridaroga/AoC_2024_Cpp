@@ -7,6 +7,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <math.h>
 
 
 // Nodo con solamente apuntadores a la izquierda y derecha.
@@ -56,6 +57,11 @@ void printEnOrden(struct nodo* nodo) {
     printEnOrden(nodo->derecha);
 }
 
+bool paginasCorrectas(std::vector<int> impresiones, nodo* arbol) {
+
+    return false;
+}
+
 int main() {
     std::ifstream rulesDocument("Rules.txt");
     std::string lineaRules { "" };
@@ -78,6 +84,8 @@ int main() {
             } else {
                 insertar(raizArbol, pagIzquierda, pagDerecha);
             }
+        } else if (lineaRules == "") {
+            continue;
         } else {
             // Guardar las impresiones en el vector<int>.
             for (std::size_t i = 0; i < lineaRules.size(); i++) {
@@ -91,6 +99,12 @@ int main() {
                 std::cout << impresiones[i] << " ";
             }
             std::cout << '\n'; */
+            if (paginasCorrectas(impresiones, raizArbol)) {
+                double mitad { ((double) impresiones.size()) / 2 };
+                int indice {(int) std::round(mitad) - 1};
+                contador += impresiones[indice];
+                //std::cout << impresiones[indice] << '\n';
+            }
         }
 
     }
