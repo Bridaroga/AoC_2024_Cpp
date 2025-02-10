@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 
 // Nodo con solamente apuntadores a la izquierda y derecha.
@@ -62,9 +63,11 @@ int main() {
     const std::size_t INICIO_REGLA { 0 };
     const std::size_t POSICION_SEPARADOR { 2 };
     const std::size_t TAMANO_REGLAS { 5 };
+    int contador { 0 };
 
     while (!rulesDocument.eof()) {
         std::getline(rulesDocument, lineaRules);
+        std::vector<int> impresiones {};
         if (lineaRules.size() == TAMANO_REGLAS && lineaRules.find( '|' ) == POSICION_SEPARADOR) {
             int pagIzquierda { std::stoi(lineaRules.substr(INICIO_REGLA, POSICION_SEPARADOR)) };
             std::string prueba {lineaRules.substr(POSICION_SEPARADOR + 1)};
@@ -77,10 +80,20 @@ int main() {
             }
         } else {
             // Guardar las impresiones en el vector<int>.
-
+            for (std::size_t i = 0; i < lineaRules.size(); i++) {
+                impresiones.push_back(std::stoi(lineaRules.substr(i, POSICION_SEPARADOR)));
+                i = lineaRules.find_first_of(',', i);
+                if (i > lineaRules.size()) {
+                    break;
+                }
+            }
+            /* for (int i = 0; i < impresiones.size(); i++) {
+                std::cout << impresiones[i] << " ";
+            }
+            std::cout << '\n'; */
         }
 
     }
 
-    printEnOrden(raizArbol);
+    //printEnOrden(raizArbol);
 }
